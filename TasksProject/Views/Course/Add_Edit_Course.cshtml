@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "Add_Edit_Course";
+}
+
+@model Course
+
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb);">
+        <div class="card-header text-white text-center rounded-top-4" style="background-color: #1976d2;">
+            <h2 class="fw-bold">@ViewBag.buttontext Course</h2>
+        </div>
+        <div class="card-body bg-light rounded-bottom-4 p-4">
+            <form asp-action="@ViewBag.Action" asp-controller="course" method="post" class="needs-validation" novalidate>
+                <div class="row g-3">
+
+                    @if (Model != null && Model.Id != 0)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                    }
+
+                    
+
+
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="form-label fw-semibold text-primary">Name</label>
+                        <input asp-for="Name" class="form-control shadow-sm" placeholder="Enter Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Degree" class="form-label fw-semibold text-primary">Degree</label>
+                        <input asp-for="Degree" class="form-control shadow-sm" placeholder="Enter Degree" />
+                        <span asp-validation-for="Degree" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="MinDegree" class="form-label fw-semibold text-primary">MinDegree</label>
+                        <input asp-for="MinDegree" class="form-control shadow-sm" placeholder="Enter Min Degree " />
+                        <span asp-validation-for="MinDegree" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Hours" class="form-label fw-semibold text-primary">Hours</label>
+                        <input asp-for="Hours" class="form-control shadow-sm" placeholder=" Enter Hours " />
+                        <span asp-validation-for="Hours" class="text-danger"></span>
+                    </div>
+
+                  
+
+                    <div class="col-md-6">
+                        <label asp-for="DepartmentId" class="form-label fw-semibold text-primary">Department</label>
+                        <select asp-for="DepartmentId" class="form-select shadow-sm">
+                            <option value="">-- Select Department --</option>
+                            @foreach (var item in ViewBag.Departments)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill shadow">
+                        <i class="bi bi-save"></i> @ViewBag.buttontext Course
+                    </button>
+                    <a asp-action="GetAllCourses" asp-controller="Course" class="btn btn-outline-secondary ms-2 px-4 rounded-pill shadow-sm">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

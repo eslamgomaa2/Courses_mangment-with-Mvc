@@ -1,0 +1,64 @@
+﻿@model Trainee
+
+@{
+    ViewData["Title"] = "Add New Trainee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4" style="max-width: 600px; margin: auto;">
+        <div class="card-header text-center bg-primary text-white rounded-top-4">
+            <h4>Add New Trainee</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="@ViewBag.Action" asp-controller="Trainee" method="post">
+                
+                <input type="hidden" asp-for="Id">
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-semibold"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter student name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Grade" class="form-label fw-semibold"></label>
+                    <input asp-for="Grade" class="form-control" placeholder="Enter grade (0-100)" />
+                    <span asp-validation-for="Grade" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label fw-semibold"></label>
+                    <input asp-for="Address" class="form-control" placeholder="Enter address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DepartmentID" class="form-label fw-semibold"></label>
+                    <select asp-for="DepartmentID" class="form-select">
+                        <option value="">-- Select Department --</option>
+                        @foreach(var item in ViewBag.Departments)
+                        {
+                            <option value="@item.Id" >@item.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="DepartmentID" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Image" class="form-label fw-semibold">Upload Image</label>
+                    <input asp-for="Image "  class="form-control" placeholder=" Enter Image Name" />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4 rounded-pill">@ViewBag.ButtonText</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

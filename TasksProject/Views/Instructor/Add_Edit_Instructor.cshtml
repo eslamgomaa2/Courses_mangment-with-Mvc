@@ -1,0 +1,87 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = ViewBag.buttontext + " Instructor";
+  
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4" style="background: linear-gradient(135deg, #e3f2fd, #bbdefb);">
+        <div class="card-header text-white text-center rounded-top-4" style="background-color: #1976d2;">
+            <h2 class="fw-bold">@ViewBag.buttontext Instructor</h2>
+        </div>
+        <div class="card-body bg-light rounded-bottom-4 p-4">
+            <form asp-action="@ViewBag.Action" asp-controller="Instructor" method="post" class="needs-validation" novalidate>
+                <div class="row g-3">
+                    @if (Model != null && Model.Id != 0)
+                    {
+                        <input type="hidden" asp-for="Id" />
+                    }
+
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="form-label fw-semibold text-primary">Name</label>
+                        <input asp-for="Name" class="form-control shadow-sm" placeholder="Enter instructor name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Salary" class="form-label fw-semibold text-primary">Salary</label>
+                        <input asp-for="Salary" class="form-control shadow-sm" placeholder="Enter salary amount" />
+                        <span asp-validation-for="Salary" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Image" class="form-label fw-semibold text-primary">Image URL</label>
+                        <input asp-for="Image" class="form-control shadow-sm" placeholder="Enter image link" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Address" class="form-label fw-semibold text-primary">Address</label>
+                        <input asp-for="Address" class="form-control shadow-sm" placeholder="Enter address" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="DepartmentId" class="form-label fw-semibold text-primary">Department</label>
+                        <select asp-for="DepartmentId" class="form-select shadow-sm">
+                            <option value="">-- Select Department --</option>
+                            @foreach (var item in ViewBag.Departments)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="CourseID" class="form-label fw-semibold text-primary">Course</label>
+                        <select asp-for="CourseID" class="form-select shadow-sm">
+                            <option value="">-- Select Course --</option>
+                            @foreach (var item in ViewBag.Courses)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CourseID" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill shadow">
+                        <i class="bi bi-save"></i> @ViewBag.buttontext Instructor
+                    </button>
+                    <a href="@Url.Action("AllInstructor", "Instructor")" class="btn btn-outline-secondary ms-2 px-4 rounded-pill shadow-sm">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+                </div>
+            </form>
+           
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

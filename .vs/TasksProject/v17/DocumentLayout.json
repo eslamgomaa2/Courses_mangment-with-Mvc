@@ -1,0 +1,209 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\views\\instructor\\instructordetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\views\\instructor\\instructordetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\views\\instructor\\add_edit_instructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\views\\instructor\\add_edit_instructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\views\\instructor\\allinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\views\\instructor\\allinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\views\\course\\allcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\views\\course\\allcourses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\tasksproject\\controllers\\traineecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81494FA1-6F35-4475-9248-064E3E64D875}|TasksProject\\TasksProject.csproj|solutionrelative:tasksproject\\controllers\\traineecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4FEABE-3249-4F86-A0E5-B05698D5D6C0}|DBcontext\\BusinessLogic.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\dbcontext\\models\\crsresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4FEABE-3249-4F86-A0E5-B05698D5D6C0}|DBcontext\\BusinessLogic.csproj|solutionrelative:dbcontext\\models\\crsresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4FEABE-3249-4F86-A0E5-B05698D5D6C0}|DBcontext\\BusinessLogic.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\dbcontext\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4FEABE-3249-4F86-A0E5-B05698D5D6C0}|DBcontext\\BusinessLogic.csproj|solutionrelative:dbcontext\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F4FEABE-3249-4F86-A0E5-B05698D5D6C0}|DBcontext\\BusinessLogic.csproj|c:\\users\\softlaptop\\desktop\\.net_projects\\mvc\\tasksproject\\dbcontext\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F4FEABE-3249-4F86-A0E5-B05698D5D6C0}|DBcontext\\BusinessLogic.csproj|solutionrelative:dbcontext\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 201,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Add_Edit_Instructor.cshtml",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Instructor\\Add_Edit_Instructor.cshtml",
+              "RelativeDocumentMoniker": "TasksProject\\Views\\Instructor\\Add_Edit_Instructor.cshtml",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Instructor\\Add_Edit_Instructor.cshtml",
+              "RelativeToolTip": "TasksProject\\Views\\Instructor\\Add_Edit_Instructor.cshtml",
+              "ViewState": "AgIAACAAAABQzczMzIwnwEkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-13T12:55:27.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InstructorController.cs",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Controllers\\InstructorController.cs",
+              "RelativeDocumentMoniker": "TasksProject\\Controllers\\InstructorController.cs",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Controllers\\InstructorController.cs",
+              "RelativeToolTip": "TasksProject\\Controllers\\InstructorController.cs",
+              "ViewState": "AgIAAAcAAACIzczMzMw2wBEAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T12:01:39.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "instructorDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Instructor\\instructorDetails.cshtml",
+              "RelativeDocumentMoniker": "TasksProject\\Views\\Instructor\\instructorDetails.cshtml",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Instructor\\instructorDetails.cshtml",
+              "RelativeToolTip": "TasksProject\\Views\\Instructor\\instructorDetails.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-13T12:38:30.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AllInstructor.cshtml",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Instructor\\AllInstructor.cshtml",
+              "RelativeDocumentMoniker": "TasksProject\\Views\\Instructor\\AllInstructor.cshtml",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Instructor\\AllInstructor.cshtml",
+              "RelativeToolTip": "TasksProject\\Views\\Instructor\\AllInstructor.cshtml",
+              "ViewState": "AgIAACYAAACA+f///38ZwDgAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-13T12:34:43.019Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Program.cs",
+              "RelativeDocumentMoniker": "TasksProject\\Program.cs",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Program.cs",
+              "RelativeToolTip": "TasksProject\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T12:33:27.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AllCourses.cshtml",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Course\\AllCourses.cshtml",
+              "RelativeDocumentMoniker": "TasksProject\\Views\\Course\\AllCourses.cshtml",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Views\\Course\\AllCourses.cshtml",
+              "RelativeToolTip": "TasksProject\\Views\\Course\\AllCourses.cshtml",
+              "ViewState": "AgIAACAAAAAAKTMzMzMbwDgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-13T12:14:38.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Controllers\\CourseController.cs",
+              "RelativeDocumentMoniker": "TasksProject\\Controllers\\CourseController.cs",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Controllers\\CourseController.cs",
+              "RelativeToolTip": "TasksProject\\Controllers\\CourseController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:32:56.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TraineeController.cs",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Controllers\\TraineeController.cs",
+              "RelativeDocumentMoniker": "TasksProject\\Controllers\\TraineeController.cs",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\TasksProject\\Controllers\\TraineeController.cs",
+              "RelativeToolTip": "TasksProject\\Controllers\\TraineeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:34:24.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CrsResult.cs",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\DBcontext\\Models\\CrsResult.cs",
+              "RelativeDocumentMoniker": "DBcontext\\Models\\CrsResult.cs",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\DBcontext\\Models\\CrsResult.cs",
+              "RelativeToolTip": "DBcontext\\Models\\CrsResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:31:00.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\DBcontext\\Models\\Course.cs",
+              "RelativeDocumentMoniker": "DBcontext\\Models\\Course.cs",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\DBcontext\\Models\\Course.cs",
+              "RelativeToolTip": "DBcontext\\Models\\Course.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:30:58.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApplicationDbcontext.cs",
+              "DocumentMoniker": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\DBcontext\\ApplicationDbcontext.cs",
+              "RelativeDocumentMoniker": "DBcontext\\ApplicationDbcontext.cs",
+              "ToolTip": "C:\\Users\\Softlaptop\\Desktop\\.net_projects\\MVC\\TasksProject\\DBcontext\\ApplicationDbcontext.cs",
+              "RelativeToolTip": "DBcontext\\ApplicationDbcontext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T10:27:21.009Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

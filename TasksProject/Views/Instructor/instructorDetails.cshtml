@@ -1,0 +1,71 @@
+﻿@model Instructor
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden" style="background: linear-gradient(135deg, #e3f2fd, #ffffff);">
+        <div class="row g-0">
+
+            <!-- Left Side (Profile Image + Info) -->
+            <div class="col-md-4 text-center d-flex flex-column align-items-center justify-content-center p-4"
+                 style="background: linear-gradient(180deg, #1976d2, #0d47a1); color: white;">
+
+                <img src="@Url.Content("~/Images/" + Model.Image)"
+                     alt="@Model.Name"
+                     class="img-fluid rounded-circle shadow-lg border border-4 border-white"
+                     style="width: 200px; height: 200px; object-fit: cover;" />
+
+                <h3 class="mt-3 fw-bold">@Model.Name</h3>
+                <p class="text-light-50 mb-1">
+                    <i class="bi bi-geo-alt-fill me-1"></i>@Model.Address
+                </p>
+
+                <hr class="w-50 text-white opacity-50" />
+
+                <div class="mt-2">
+                    <p class="mb-0"><strong>Department:</strong> <span class="text-warning">@Model.Department?.Name</span></p>
+                    <p class="mb-0"><strong>Course:</strong> <span class="text-info">@Model.Course?.Name</span></p>
+                </div>
+            </div>
+
+            <!-- Right Side (Details Table) -->
+            <div class="col-md-8 p-5 bg-white">
+                <h4 class="fw-bold text-primary mb-4 border-bottom pb-2">
+                    <i class="bi bi-person-badge me-2"></i>Instructor Details
+                </h4>
+
+                <table class="table table-borderless align-middle">
+                    <tbody>
+                        <tr>
+                            <th class="text-muted" style="width: 30%;"><i class="bi bi-person-fill me-2 text-primary"></i>Name</th>
+                            <td class="fw-semibold">@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><i class="bi bi-cash-coin me-2 text-success"></i>Salary</th>
+                            <td class="fw-semibold">@Model.Salary</td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><i class="bi bi-geo-alt-fill me-2 text-danger"></i>Address</th>
+                            <td>@Model.Address</td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><i class="bi bi-book-fill me-2 text-info"></i>Course</th>
+                            <td class="fw-semibold text-info">@Model.Course?.Name</td>
+                        </tr>
+                        <tr>
+                            <th class="text-muted"><i class="bi bi-building me-2 text-warning"></i>Department</th>
+                            <td class="fw-semibold text-warning">@Model.Department?.Name</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="mt-4 d-flex justify-content-start">
+                    <a href="/Instructor/EditInstructor?id=@Model.Id" class="btn btn-primary me-3 px-4 rounded-pill shadow-sm">
+                        <i class="bi bi-pencil-square me-1"></i> Edit
+                    </a>
+                    <a asp-action="AllInstructor" asp-controller="Instructor" class="btn btn-outline-secondary px-4 rounded-pill shadow-sm">
+                        <i class="bi bi-arrow-left me-1"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
