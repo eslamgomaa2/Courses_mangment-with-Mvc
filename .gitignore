@@ -1,0 +1,45 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+Debug/
+Release/
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# Local secrets
+appsettings.Development.json
+appsettings.Local.json
+
+# Publish files
+publish/
+*.Publish.xml
+
+# Rider / JetBrains
+.idea/
+
+# Misc
+*.swp
+*.bak
+*.dbmdl
+*.jfm
+*.pdb
+
+# Node (if using frontend)
+node_modules/
+npm-debug.log
+yarn-error.log
