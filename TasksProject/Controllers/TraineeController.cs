@@ -24,7 +24,7 @@ namespace TasksProject.Controllers
         public async Task<IActionResult> AddTrainee()
         {
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
-            ViewBag.Button = "Add";
+            ViewBag.ButtonText = "Add";
             ViewBag.Action = "SaveAddedTrainee";
 
             return View("Add_Edit_Trainee");
@@ -41,24 +41,24 @@ namespace TasksProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
-            ViewBag.Button = "Add";
+            ViewBag.ButtonText = "Add";
             ViewBag.Action = "SaveAddedTrainee";
             return View("Add_Edit_Trainee",model);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> EditTrainee(int id)
         {
             var trainee = await _dbcontext.Trainees.FindAsync(id);
             if (trainee == null) return NotFound();
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
-            ViewBag.Button = "Update";
-            ViewBag.Action = "SaveEdit";
+            ViewBag.ButtonText = "Update";
+            ViewBag.Action = "SaveEditTrainee";
             return View("Add_Edit_Trainee", trainee);
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveEdit(Trainee model)
+        public async Task<IActionResult> SaveEditTrainee(Trainee model)
         {
             if (ModelState.IsValid)
             {
@@ -67,13 +67,29 @@ namespace TasksProject.Controllers
                 return RedirectToAction("GetAllTrainee");
             }
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
-            ViewBag.Button = "Update";
-            ViewBag.Action = "SaveEdit";
+            ViewBag.ButtonText = "Update";
+            ViewBag.Action = "SaveEditTrainee";
             return View("Add_Edit_Trainee",model);
         }
+        [HttpGet]
+        public async Task<IActionResult> TraineeDetails(int id)
+        {
+            var trainee = await _dbcontext.Trainees
+                .Include(t => t.CrsResults)!
+                    .ThenInclude(r => r.Course)
+                .SingleOrDefaultAsync(t => t.Id == id);
+
+            if (trainee == null)
+                return NotFound();
+
+            return View("TraineeDetails",trainee);
+        }
+
+
+
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteTrainee(int id)
         {
             var trainee = await _dbcontext.Trainees.FindAsync(id);
             if (trainee == null) return NotFound();

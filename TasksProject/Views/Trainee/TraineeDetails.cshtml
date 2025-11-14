@@ -1,0 +1,58 @@
+﻿@model Trainee
+
+@{
+    ViewData["Title"] = "Trainee Details";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Trainee Details</h2>
+
+    <div class="card p-3 mb-4 shadow-sm">
+        <h4 class="mb-3">Trainee Information</h4>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Address:</strong> @Model.Address</p>
+    </div>
+
+    <div class="card p-3 shadow-sm">
+        <div class="d-flex justify-content-between mb-3">
+            <h4 class="mb-0">Courses & Results</h4>
+            <a asp-action="AddCrsResult" asp-controller="CrsResult" asp-route-traineeId="@Model.Id" class="btn btn-primary btn-sm">
+                Add Course Result
+            </a>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>Course</th>
+                    <th>Degree</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model.CrsResults!)
+                {
+                    var status = result.Degree >= 50 ? "Pass" : "Fail";
+                    var statusClass = result.Degree >= 50 ? "text-success" : "text-danger";
+
+                    <tr>
+                        <td>@result.Course?.Name</td>
+                        <td>@result.Degree</td>
+                        <td class="fw-bold @statusClass">@status</td>
+                        <td>
+                            <a asp-action="EditCrsResult"
+                               asp-controller="CrsResult"
+                               asp-route-id="@result.Id"
+                               class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <a asp-action="AllTrainee" asp-controller="Trainee" class="btn btn-secondary mt-3">Back</a>
+</div>

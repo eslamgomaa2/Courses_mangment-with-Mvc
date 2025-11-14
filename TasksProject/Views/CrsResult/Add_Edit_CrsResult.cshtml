@@ -1,0 +1,39 @@
+﻿@model CrsResult
+
+@{
+    ViewData["Title"] = "Add/Edit Course Result";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Course Result</h2>
+
+    <form asp-action="@ViewBag.Action" asp-controller="CrsResult" method="post">
+        <div class="card p-4 shadow-sm rounded-3">
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TraineeID" value="@Model.TraineeID" />
+
+            <div class="mb-3">
+                <label asp-for="Degree" class="form-label"></label>
+                <input asp-for="Degree" class="form-control" />
+                <span asp-validation-for="Degree" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CrsID" class="form-label">Course</label>
+                <select asp-for="CrsID" class="form-select">
+                    @foreach(var item in ViewBag.Courses)
+                    {
+                        <option value="@item.Id" >@item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CrsID" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary px-4">@ViewBag.ButtonText</button>
+            <a asp-action="TraineeDetails" asp-controller="Trainee" asp-route-id="@Model.TraineeID" class="btn btn-secondary ms-2">Back</a>
+        </div>
+    </form>
+</div>
+
+

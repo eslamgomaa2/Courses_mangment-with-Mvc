@@ -1,0 +1,28 @@
+﻿@model CrsResult
+
+@{
+    ViewData["Title"] = "Trainee Course Result";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Trainee Course Result</h2>
+
+    <div class="card p-4 shadow-sm rounded-3">
+        <div class="mb-3">
+            <label class="form-label fw-bold">Trainee Name:</label>
+            <p>@Model.Trainee?.Name</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Course:</label>
+            <p>@Model.Course?.Name</p>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Degree:</label>
+            <p>@Model.Degree</p>
+        </div>
+
+        <a asp-action="AllTrainee" asp-controller="Trainee" class="btn btn-secondary mt-3">Back</a>
+    </div>
+</div>
