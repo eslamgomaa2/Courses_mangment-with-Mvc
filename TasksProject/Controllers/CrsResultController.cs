@@ -26,20 +26,36 @@ namespace TasksProject.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveAddCrsResult(CrsResult model)
         {
-            var traineeExists = _dbcontext.Trainees.Any(t => t.Id == model.TraineeID);
-            if (traineeExists) { 
-            if (ModelState.IsValid)
+           
+            if (!ModelState.IsValid)
             {
-                _dbcontext.CrsResults.Add(model);
-                _dbcontext.SaveChanges();
-                return RedirectToAction("AllTrainee", "Trainee");
+                ViewBag.Courses = await _dbcontext.Courses.ToListAsync();
+                ViewBag.ButtonText = "Add";
+                ViewBag.Action = "SaveAddCrsResult";
+                return View("Add_Edit_CrsResult", model);
             }
-           }
-            ViewBag.Courses = await _dbcontext.Courses.ToListAsync();
-            ViewBag.ButtonText = "Add";
-            ViewBag.Action = "SaveAddCrsResult";
-            return View("Add_Edit_CrsResult",model);
+
+            
+            var traineeExists = await _dbcontext.Trainees
+                                               .AnyAsync(t => t.Id == model.TraineeID);
+
+            if (!traineeExists)
+            {
+                ModelState.AddModelError("", "Trainee not found.");
+                ViewBag.Courses = await _dbcontext.Courses.ToListAsync();
+                return View("Add_Edit_CrsResult", model);
+            }
+
+            
+            _dbcontext.CrsResults.Add(model);
+            await _dbcontext.SaveChangesAsync();
+
+            
+            return RedirectToAction(
+                "TraineeDetails", "Trainee",new { id = model.TraineeID }
+            );
         }
+
         [HttpGet]
         public async Task<IActionResult> EditCrsResult(int id)
         {
