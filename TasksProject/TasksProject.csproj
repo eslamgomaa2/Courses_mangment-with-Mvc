@@ -20,4 +20,11 @@
     <ProjectReference Include="..\DBcontext\BusinessLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\Interfaces\" />
+    <Folder Include="Repositories\Implementions\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Services\Implementions\" />
+  </ItemGroup>
+
 </Project>
