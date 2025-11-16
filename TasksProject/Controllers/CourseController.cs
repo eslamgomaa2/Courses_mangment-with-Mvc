@@ -1,30 +1,34 @@
 ﻿using DBcontext;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TasksProject._03_Services.Implementions;
 using TasksProject.Models;
+
 
 namespace TasksProject.Controllers
 {
     public class CourseController : Controller
     {
         private readonly ApplicationDbContext _dbcontext;
+        private readonly ICourseServices _courseService;
 
-        public CourseController(ApplicationDbContext dbcontext)
+        public CourseController(ApplicationDbContext dbcontext, ICourseServices courseService)
         {
             _dbcontext = dbcontext;
+            _courseService = courseService;
         }
 
-       
+
         [HttpGet]
         public async Task<IActionResult> GetAllCourses()
         {
-            var courses = await _dbcontext.Courses.Include(c => c.Department).ToListAsync();
+            var courses = await _courseService.GetAllCoursesAsync();
             return View("AllCourses",courses);
         }
 
         
         [HttpGet]
-        public async Task<IActionResult> AddCourse()
+        public async Task<IActionResult> AddCourse()    
         {
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
             ViewBag.Action = "SaveAddedCourse";
@@ -38,8 +42,7 @@ namespace TasksProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _dbcontext.Courses.AddAsync(model);
-                await _dbcontext.SaveChangesAsync();
+                await _courseService.AddCourseAsync(model);
                 return RedirectToAction("GetAllCourses");
             }
 
@@ -53,7 +56,7 @@ namespace TasksProject.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var course = await _dbcontext.Courses.FindAsync(id);
+            var course = await _courseService.GetCourseByIdAsync(id);
             if (course == null) return NotFound();
 
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
@@ -68,7 +71,7 @@ namespace TasksProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbcontext.Courses.Update(model);
+              await _courseService.UpdateCourseAsync(model);
                 await _dbcontext.SaveChangesAsync();
                 return RedirectToAction("GetAllCourses");
             }
@@ -83,10 +86,10 @@ namespace TasksProject.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteCourse(int id)
         {
-            var course = await _dbcontext.Courses.FindAsync(id);
+            var course = await _courseService.GetCourseByIdAsync(id);
             if (course == null) return NotFound();
 
-            _dbcontext.Courses.Remove(course);
+           _courseService.DeleteCourseAsync(course);
             await _dbcontext.SaveChangesAsync();
             return RedirectToAction("GetAllCourses");
         }
