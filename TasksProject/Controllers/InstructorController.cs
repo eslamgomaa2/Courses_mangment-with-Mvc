@@ -1,6 +1,7 @@
 ﻿using DBcontext;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TasksProject._03_Services.Interfaces;
 using TasksProject.Models;
 
 namespace TasksProject.Controllers
@@ -8,16 +9,18 @@ namespace TasksProject.Controllers
     public class InstructorController : Controller
     {
         private readonly ApplicationDbContext _dbcontext;
+        private readonly IInstructorServices _instructorServices;
 
-        public InstructorController(ApplicationDbContext dbcontext)
+        public InstructorController(ApplicationDbContext dbcontext, IInstructorServices instructorServices)
         {
             _dbcontext = dbcontext;
+            _instructorServices = instructorServices;
         }
 
         [HttpGet]
         public async Task<IActionResult> AllInstructor()
         {
-            var instructors = await _dbcontext.Instructors.Include(o=>o.Department).Include(o=>o.Course).ToListAsync();
+            var instructors = await _instructorServices.GetAllInstructor_RelatedData();
             return View("AllInstructor",instructors);
         }
 
@@ -37,8 +40,7 @@ namespace TasksProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _dbcontext.Instructors.AddAsync(model);
-                await _dbcontext.SaveChangesAsync();
+                await _instructorServices.AddInstructor(model);
                 return RedirectToAction("AllInstructor");
             }
 
@@ -54,8 +56,7 @@ namespace TasksProject.Controllers
         [HttpGet]
         public async Task<IActionResult> EditInstructor(int id)
         {
-            var instructor = await _dbcontext.Instructors.FindAsync(id);
-            if (instructor == null) return NotFound();
+            var instructor = await _instructorServices.GetInstructoreById(id);
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
             ViewBag.Courses = await _dbcontext.Courses.ToListAsync();
             ViewBag.Button = "Update";
@@ -69,8 +70,7 @@ namespace TasksProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbcontext.Instructors.Update(model);
-                await _dbcontext.SaveChangesAsync();
+                await _instructorServices.UpdateInstructor(model);
                 return RedirectToAction("AllInstructor");
             }
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
@@ -83,7 +83,7 @@ namespace TasksProject.Controllers
         [HttpGet]
         public async Task<IActionResult> GetInstructorDetails(int id)
         {
-            var instructor = await _dbcontext.Instructors.FindAsync(id);
+            var instructor = await _instructorServices.GetInstructoreById(id);
             if (instructor == null) return NotFound();
            
             return View("InstructorDetails", instructor);
@@ -92,11 +92,9 @@ namespace TasksProject.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var instructor = await _dbcontext.Instructors.FindAsync(id);
+            var instructor = await _instructorServices.GetInstructoreById(id);
             if (instructor == null) return NotFound();
-
-            _dbcontext.Instructors.Remove(instructor);
-            await _dbcontext.SaveChangesAsync();
+            await _instructorServices.RemoveInstructor(instructor);
             return RedirectToAction(nameof(Index));
         }
     }
