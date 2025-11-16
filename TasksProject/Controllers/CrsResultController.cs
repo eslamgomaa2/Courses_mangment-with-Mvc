@@ -1,6 +1,7 @@
 ﻿using DBcontext;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TasksProject._03_Services.Interfaces;
 using TasksProject.Models;
 
 namespace TasksProject.Controllers
@@ -8,10 +9,13 @@ namespace TasksProject.Controllers
     public class CrsResultController : Controller
     {
         private readonly ApplicationDbContext _dbcontext;
+        private readonly ICourseRes_Services courseRes_Services;
 
-        public CrsResultController(ApplicationDbContext context)
+
+        public CrsResultController(ApplicationDbContext context, ICourseRes_Services courseRes_Services)
         {
             _dbcontext = context;
+            this.courseRes_Services = courseRes_Services;
         }
         [HttpGet]
 
@@ -35,9 +39,8 @@ namespace TasksProject.Controllers
                 return View("Add_Edit_CrsResult", model);
             }
 
-            
-            var traineeExists = await _dbcontext.Trainees
-                                               .AnyAsync(t => t.Id == model.TraineeID);
+
+            var traineeExists = courseRes_Services.IsTraineeExist(model.Id);
 
             if (!traineeExists)
             {
@@ -46,10 +49,7 @@ namespace TasksProject.Controllers
                 return View("Add_Edit_CrsResult", model);
             }
 
-            
-            _dbcontext.CrsResults.Add(model);
-            await _dbcontext.SaveChangesAsync();
-
+          await  courseRes_Services.AddCourseRes(model);
             
             return RedirectToAction(
                 "TraineeDetails", "Trainee",new { id = model.TraineeID }
@@ -59,8 +59,8 @@ namespace TasksProject.Controllers
         [HttpGet]
         public async Task<IActionResult> EditCrsResult(int id)
         {
-            var crsResult = await _dbcontext.CrsResults.SingleOrDefaultAsync(o => o.Id == id);
-            if (crsResult == null) return NotFound();
+            var crsResult = await courseRes_Services.FindCourseResById(id);
+            
             ViewBag.Courses = await _dbcontext.Courses.ToListAsync();
             ViewBag.ButtonText = "Update";
             ViewBag.Action = "SaveEditCrsResult";
@@ -72,8 +72,7 @@ namespace TasksProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbcontext.CrsResults.Update(model);
-                await _dbcontext.SaveChangesAsync();
+               await  courseRes_Services.UpdateCourseRes(model);
                 return RedirectToAction("TraineeDetails", "trainee");
             }
             ViewBag.Courses = await _dbcontext.Courses.ToListAsync();
