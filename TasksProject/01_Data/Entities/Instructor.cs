@@ -20,9 +20,14 @@ namespace TasksProject.Models
         
         public decimal Salary { get; set; }
         [Required]
-        public string Image { get; set; }
+        public string? Image { get; set; }
         [Required]
-        public string Address { get; set; }
+        public string? Address { get; set; }
+        [Required]
+        public string? Country { get; set; }
+        [Required]
+
+        public string? City { get; set; }
         [Required]
 
         [ForeignKey("Department")]
@@ -30,7 +35,7 @@ namespace TasksProject.Models
         [ForeignKey("Course")]
         [Required]
         public int CourseID { get; set; }
-        public Course Course { get; set; }
-        public Department Department { get; set; }
+        public Course? Course { get; set; }
+        public Department? Department { get; set; }
     }
 }

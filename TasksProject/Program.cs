@@ -1,6 +1,9 @@
 using DBcontext;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation; // Add this using directive  
+using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
+using TasksProject.Data.Entities;
+using Microsoft.AspNetCore.Identity;
+using TasksProject.Infrastructure; // Add this using directive  
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,9 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
+   .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddInfrastructure();
 
 var app = builder.Build();
 

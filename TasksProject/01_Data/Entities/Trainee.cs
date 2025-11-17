@@ -14,9 +14,9 @@ namespace TasksProject.Models
         [Required]
         public string? Image { get; set; }
         [Required]
-        [RegularExpression(("Alex|cairo"), ErrorMessage="Must Choose Alex or Cairo")]
-        
-        public string? Address { get; set; }
+        public string? Country { get; set; }
+        [Required]
+        public string? City { get; set; }
         [Required]
         [ForeignKey("Department")]
         public int DepartmentID { get; set; }
