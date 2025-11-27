@@ -14,6 +14,12 @@ namespace TasksProject._02_Repositories.Implementions
             _dbcontext = context;
         }
 
+        public async Task<List<Trainee>> GetAllTrainee_InSpecific_Course(int courseid)
+        {
+            var trainee= await _dbcontext.Trainees.Where(o=>o.CrsResults!=null&&o.CrsResults.Any(o=>o.CrsID==courseid)).ToListAsync();
+            return trainee;
+        }
+
         public Task<Trainee> GetTraineeDetails(int id)
         {
             var trainee = _dbcontext.Trainees

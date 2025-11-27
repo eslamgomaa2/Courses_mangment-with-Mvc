@@ -1,4 +1,5 @@
-﻿using TasksProject._02_Repositories.Interfaces;
+﻿using TasksProject._02_Repositories.Implementions;
+using TasksProject._02_Repositories.Interfaces;
 using TasksProject._03_Services.Interfaces;
 using TasksProject.Models;
 
@@ -23,6 +24,12 @@ namespace TasksProject._03_Services.Implementions
         public async Task<List<Trainee>> GetAllTrainees()
         {
             return await _genericRepo.GetAllAsync();
+        }
+
+        public async Task<List<Trainee>> GetAllTrainee_InSpecific_Course(int id)
+        {
+            var trainee = await _traineerepo.GetAllTrainee_InSpecific_Course(id);
+            return trainee;
         }
 
         public async Task<Trainee> GetTraineeById(int id)

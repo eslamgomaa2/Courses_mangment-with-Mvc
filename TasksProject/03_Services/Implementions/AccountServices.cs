@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using TasksProject._02_Repositories.Interfaces;
 using TasksProject._03_Services.Interfaces;
+using TasksProject._06_ViewModel;
 using TasksProject.Data.Entities;
+using TasksProject.Helper;
 using TasksProject.Models;
 using TasksProject.ViewModel;
 
@@ -13,14 +15,14 @@ namespace TasksProject._03_Services.Implementions
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IGenericRepo<Instructor> instructorRepo;
         private readonly IGenericRepo<Trainee> traineeRepo;
-
-
-        public AccountServices(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IGenericRepo<Instructor> instructorRepo, IGenericRepo<Trainee> traineeRepo)
+        private readonly IEmailServices emailServices;
+        public AccountServices(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IGenericRepo<Instructor> instructorRepo, IGenericRepo<Trainee> traineeRepo, IEmailServices emailServices)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.instructorRepo = instructorRepo;
             this.traineeRepo = traineeRepo;
+            this.emailServices = emailServices;
         }
 
         //public AccountResponce RegisterAsIstructor(RegisterViewModel model)
@@ -55,33 +57,56 @@ namespace TasksProject._03_Services.Implementions
 
 
 
-        public  async Task Login(LoginViewModel model)
+        public async Task Login(LoginViewModel model)
         {
-           var user = await userManager.FindByEmailAsync(model.Email);
-            if(user is null)
+            var user = await userManager.FindByEmailAsync(model.Email!);
+            if (user == null)
             {
-                throw new Exception("Email Or PAssword Is InCorrect");
+                throw new Exception("Email or password is incorrect");
             }
-           var res = await userManager.CheckPasswordAsync(user,model.Password!);
-            if (res)
-            {
-                await signInManager.SignInAsync(user, model.RememberMe);
-            }
-            throw new Exception("Email Or PAssword Is InCorrect");
 
+            var passwordValid = await userManager.CheckPasswordAsync(user, model.Password!);
+            if (!passwordValid)
+            {
+                throw new Exception("Email or password is incorrect");
+            }
+
+            await signInManager.SignInAsync(user, model.RememberMe);
         }
-       
+
+
 
         public async Task ForgetPassword(ForgetPasswordViewModel model)
         {
-           var user =  await userManager.FindByEmailAsync(model.Email);
+
+           var user =  await userManager.FindByEmailAsync(model.Email!);
             if (user is null)
             {
                 throw new Exception("Email Is Not Exsit");
             }
           var token =  await userManager.GeneratePasswordResetTokenAsync(user);
-            // to do :email method to send token
+            var resetLink = $"https://localhost:7221/Account/ResetPassword?email={model.Email}&token={token}";
+            var message = new EmailMessage();
+            message.To = model.Email!;
+            message.Subject = "Reset Password";
+            message.Body = $"<a href='{resetLink}'>Click Here To Reset Your Password</a>";
+            await emailServices.SendEmailAsync(message.To,message.Subject,message.Body);
 
+            
+
+        }
+        public async Task ResetPassword(ResetPasswordViewModel model)
+        {
+           var user = await userManager.FindByEmailAsync(model.Email);
+            if (user is null)
+            {
+                throw new Exception("Email Is Not Exsit");
+            }
+          var res=  await userManager.ResetPasswordAsync(user, model.Token!, model.NewPassword!);
+            if (!res.Succeeded)
+            {
+                throw new Exception("Reset Password Failed");
+            }
         }
 
         public async Task Logout()

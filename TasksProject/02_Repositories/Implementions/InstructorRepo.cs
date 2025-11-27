@@ -20,5 +20,13 @@ namespace TasksProject._02_Repositories.Implementions
             var instructors = await _dbcontext.Instructors.Include(o => o.Department).Include(o => o.Course).ToListAsync();
             return instructors;
         }
+
+        public Task<List<Course>?> GetCourseofInstructor(int instructorid)
+        {
+            var course = _dbcontext.Courses.Where(o => o.Instructors != null && o.Instructors.Any(o => o.Id == instructorid)).ToListAsync();
+            return course!;
+        }
+
+       
     }
 }

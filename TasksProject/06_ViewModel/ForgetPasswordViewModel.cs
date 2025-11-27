@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TasksProject.ViewModel
+namespace TasksProject._06_ViewModel
 {
     public class ForgetPasswordViewModel
     {
-        [EmailAddress]
         [Required]
-        public string Email { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string? Email { get; set; }
     }
 }

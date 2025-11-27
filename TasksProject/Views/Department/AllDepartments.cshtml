@@ -1,0 +1,102 @@
+﻿@model IEnumerable<TasksProject.Models.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<style>
+    .page-title {
+        color: #0d6efd; /* Bootstrap blue */
+        font-weight: 700;
+    }
+
+    .card-custom {
+        border: 1px solid #0d6efd;
+        border-radius: 12px;
+    }
+
+    .table thead {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .btn-blue {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+        .btn-blue:hover {
+            background-color: #0b5ed7;
+            color: white;
+        }
+</style>
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="page-title">Departments</h2>
+
+        <a asp-action="AddDepartment" asp-controller="Department" class="btn btn-blue">
+            <i class="bi bi-plus-circle"></i> Add New Department
+        </a>
+    </div>
+
+    <div class="card card-custom shadow-sm">
+        <div class="card-body p-0">
+
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Manager</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Manger</td>
+                            <td class="text-center">
+
+                                <a asp-action="EditDepartment" asp-controller="Department" asp-route-id="@item.Id" class="btn btn-sm btn-warning me-1">
+                                    Edit
+                                </a>
+
+
+
+                                <a asp-action="DeleteDepartment" asp-controller="Department"  onclick="confirmDelete(@item.Id)" class="btn btn-sm btn-danger">
+                                    Delete
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This action cannot be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/Department/DeleteDepartment?id=' + id;
+            }
+        });
+    }
+</script>

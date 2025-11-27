@@ -23,6 +23,13 @@ namespace TasksProject.Controllers
             var trainees = await _traineeServices.GetAllTrainees();
             return View("AllTrainee",trainees);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllTrainee_InSpecificCourse(int courseid)
+        {
+            var trainees = await _traineeServices.GetAllTrainee_InSpecific_Course(courseid);
+            return View("AllTrainee",trainees);
+        }
         [HttpGet]
         public async Task<IActionResult> AddTrainee()
         {

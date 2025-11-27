@@ -1,0 +1,81 @@
+﻿@model List<TasksProject.Models.Course>
+
+@{
+    ViewData["Title"] = "Instructor Courses";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white rounded-top-4">
+            <h3 class="mb-0">
+                <i class="fa-solid fa-book"></i> Instructor Courses
+            </h3>
+        </div>
+
+        <div class="card-body p-4">
+
+            @if (Model == null || !Model.Any())
+            {
+                <div class="alert alert-warning text-center">
+                    <i class="fa-solid fa-circle-info"></i> No Courses Found.
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover table-striped align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th><i class="fa-solid fa-hashtag"></i> ID</th>
+                            <th><i class="fa-solid fa-book-open"></i> Name</th>
+                            <th><i class="fa-solid fa-chart-line"></i> Degree</th>
+                            <th><i class="fa-solid fa-marker"></i> Min Degree</th>
+                            <th><i class="fa-solid fa-clock"></i> Hours</th>
+                            <th><i class="fa-solid fa-building"></i> Department</th>
+                            <th class="text-center"><i class="fa-solid fa-gear"></i> Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var crs in Model)
+                        {
+                            <tr style="cursor:pointer;"
+                                onclick="window.location='@Url.Action("GetAllTrainee_InSpecificCourse", "Trainee", new { courseid = crs.Id })'">
+
+                                <td>@crs.Id</td>
+                                <td>@crs.Name</td>
+                                <td>@crs.Degree</td>
+                                <td>@crs.MinDegree</td>
+                                <td>@crs.Hours</td>
+                                <td>@crs.Department!.Name</td>
+
+                                <td class="text-center">
+
+                                    <a asp-action="Edit" asp-controller="Course" asp-route-id="@crs.Id" class="btn btn-warning btn-sm">
+                                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                                    </a>
+
+                                    <a asp-action="DeleteCourse" asp-controller="Course" asp-route-id="@crs.Id" class="btn btn-danger btn-sm">
+                                        <i class="fa-solid fa-trash"></i> Delete
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+
+        <div class="card-footer bg-light rounded-bottom-4 text-end">
+            <a asp-action="InstructorDashbord" asp-controller="instructor" class="btn btn-secondary">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+
+    </div>
+</div>

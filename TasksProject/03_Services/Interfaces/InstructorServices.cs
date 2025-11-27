@@ -9,5 +9,7 @@ namespace TasksProject._03_Services.Interfaces
         public Task AddInstructor(Instructor model);
         public Task RemoveInstructor(Instructor model);
         public Task UpdateInstructor(Instructor model);
+        public Task<List<Instructor>> GetAllInstructor();
+        public Task<List<Course>?> GetCourseofInstructor(int instructorid);
     }
 }

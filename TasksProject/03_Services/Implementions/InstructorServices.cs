@@ -38,6 +38,12 @@ namespace TasksProject._03_Services.Implementions
             return instructors;
         }
 
+        public async Task<List<Course>?> GetCourseofInstructor(int instructorid)
+        {
+          var corse= await _instructorRepo.GetCourseofInstructor(instructorid);
+            return corse;
+        }
+
         public Task<Instructor> GetInstructorDetails(int id)
         {
             throw new NotImplementedException();

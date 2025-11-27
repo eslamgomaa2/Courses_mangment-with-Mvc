@@ -1,0 +1,182 @@
+﻿@Model Instructor
+@{
+    ViewData["Title"] = "Instructor Dashboard";
+    Layout = "_Layout";
+}
+
+<!-- Top Navigation / Header -->
+<header class="bg-light border-bottom">
+    <div class="container-fluid d-flex justify-content-between align-items-center py-2">
+        <!-- Search Bar -->
+        <div class="col-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search courses, students, assignments..." aria-label="Search">
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Profile & Notifications -->
+        <div class="d-flex align-items-center gap-3">
+           
+            <!-- Profile -->
+            <div class="d-flex align-items-center gap-2">
+                <img src="~/images/1.jpg" alt="Profile" class="rounded-circle" width="36" height="36">
+                <span> Eslam gomaa</span>
+                <button class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <nav class="col-md-2 d-md-block bg-light sidebar py-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" asp-action="InstructorDashbord" asp-controller="Instructor">
+                        <i class="fas fa-home me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetInstructorCourse" asp-controller="instructor">
+                        <i class="fas fa-book me-2"></i> Courses
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-tasks me-2"></i> Assignments
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-poll me-2"></i> Quizzes/Exams
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-comments me-2"></i> Discussions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-chart-bar me-2"></i> Reports / Analytics
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-cog me-2"></i> Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Dashboard Area -->
+        <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4 py-4">
+            <!-- Course Overview -->
+            <h4 class="mb-4">Course Overview</h4>
+
+            <div class="row">
+                @foreach (var course in ViewBag.Courses)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card text-white bg-primary h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">@course.Name</h5>
+                                <p class="card-text">
+                                    <i class="fas fa-user me-2"></i>
+                                    @ViewBag.TraineesCount[course.Id] Students
+                                </p>
+
+                                <a asp-action="GetAllTrainee_InSpecificCourse" asp-controller="Trainee" asp-route-courseid="@course.Id" class="btn btn-light btn-sm">
+                                    <i class="fas fa-users"></i> View Students
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+            <!-- Recent Activity & Student Performance -->
+            <div class="row mb-4">
+                <!-- Recent Activity -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Recent Activity</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <strong>Alex Johnson</strong> submitted assignment for CS101
+                                <span class="text-muted float-end">2 hours ago</span>
+                            </li>
+                            <li class="list-group-item">
+                                New message in MATH202 forum: "Clarification on Problem 3"
+                                <span class="text-muted float-end">5 hours ago</span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Emma Lee</strong> requested deadline extension
+                                <span class="text-muted float-end">1 day ago</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Student Performance -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Student Performance</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="performanceChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <!-- Notifications / Alerts -->
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>3 overdue assignments</strong> need grading. Don’t forget to update grades!
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </main>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sample Student Performance Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['CS101', 'MATH202', 'PHYS105'],
+                datasets: [{
+                    label: 'Avg. Grade (%)',
+                    data: [85, 78, 82],
+                    backgroundColor: ['#0d6efd', '#198754', '#0dcaf0']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+}

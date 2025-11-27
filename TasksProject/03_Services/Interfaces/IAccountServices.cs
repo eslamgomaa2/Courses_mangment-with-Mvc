@@ -1,4 +1,5 @@
-﻿using TasksProject._06_ViewModel;
+﻿
+using TasksProject._06_ViewModel;
 using TasksProject.ViewModel;
 
 namespace TasksProject._03_Services.Interfaces
@@ -7,6 +8,7 @@ namespace TasksProject._03_Services.Interfaces
     {
         public Task Login(LoginViewModel model);
         public Task ForgetPassword(ForgetPasswordViewModel model);
+        public  Task ResetPassword(ResetPasswordViewModel model);
         public Task Logout ();
 
     }

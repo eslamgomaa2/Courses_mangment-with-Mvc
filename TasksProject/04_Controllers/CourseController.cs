@@ -32,7 +32,7 @@ namespace TasksProject.Controllers
         {
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
             ViewBag.Action = "SaveAddedCourse";
-            ViewBag.Button = "Add Course";
+            ViewBag.Button = "Add int";
             return View("Add_Edit_Course");
         }
 
@@ -48,7 +48,7 @@ namespace TasksProject.Controllers
 
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
             ViewBag.Action = "SaveAddedCourse";
-            ViewBag.Button = "Add Course";
+            ViewBag.Button = "Add int";
             return View("Add_Edit_Course",model);
         }
 
@@ -61,7 +61,7 @@ namespace TasksProject.Controllers
 
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
             ViewBag.Action = "SaveupdatedCourse";
-            ViewBag.Button = "Edit Course";
+            ViewBag.Button = "Edit int";
             return View("Add_Edit_Course",course);
         }
 
@@ -78,7 +78,7 @@ namespace TasksProject.Controllers
 
             ViewBag.Departments = await _dbcontext.Departments.ToListAsync();
             ViewBag.Action = "SaveupdatedCourse";
-            ViewBag.Button = "Edit Course";
+            ViewBag.Button = "Edit int";
             return View("Add_Edit_Course",model);
         }
 
@@ -89,7 +89,7 @@ namespace TasksProject.Controllers
             var course = await _courseService.GetCourseByIdAsync(id);
             if (course == null) return NotFound();
 
-           _courseService.DeleteCourseAsync(course);
+           await _courseService.DeleteCourseAsync(course);
             await _dbcontext.SaveChangesAsync();
             return RedirectToAction("GetAllCourses");
         }

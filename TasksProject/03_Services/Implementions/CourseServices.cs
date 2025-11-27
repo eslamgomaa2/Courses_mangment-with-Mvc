@@ -38,7 +38,7 @@ namespace TasksProject._03_Services.Implementions
             var course = await _courseRepo.GetCourseWithDepartment(id);
             if (course == null)
             {
-                throw new Exception("Course not found");
+                throw new Exception("int not found");
             }
             return course;
         }

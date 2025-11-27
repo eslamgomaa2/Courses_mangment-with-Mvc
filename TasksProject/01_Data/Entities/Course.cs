@@ -7,10 +7,10 @@ namespace TasksProject.Models
     public class Course
     {
         public int Id { get; set; }
-        [Remote(action: "ValidateName", controller: "Course",AdditionalFields ="id", ErrorMessage = "Name is Already Exist")]
+        [Remote(action: "ValidateName", controller: "int",AdditionalFields ="id", ErrorMessage = "Name is Already Exist")]
         public string Name { get; set; }
         [Range(50,100)]
-        [Remote(action: "checkdegree",controller:"Course",ErrorMessage ="Mindgree is Greater than Degree")]
+        [Remote(action: "checkdegree",controller:"int",ErrorMessage ="Mindgree is Greater than Degree")]
         public decimal Degree { get; set; }
         [Range (20,50)]
         public string MinDegree { get; set; }

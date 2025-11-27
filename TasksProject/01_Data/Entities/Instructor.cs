@@ -32,7 +32,7 @@ namespace TasksProject.Models
 
         [ForeignKey("Department")]
         public int DepartmentId { get; set; }
-        [ForeignKey("Course")]
+        [ForeignKey("int")]
         [Required]
         public int CourseID { get; set; }
         public Course? Course { get; set; }

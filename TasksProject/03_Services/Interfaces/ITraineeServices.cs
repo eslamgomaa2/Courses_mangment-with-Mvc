@@ -10,5 +10,6 @@ namespace TasksProject._03_Services.Interfaces
         public Task AddTrainee(Trainee model);
         public Task RemoveTrainee(Trainee model);
         public Task Updatetrainee(Trainee model);
+        public  Task<List<Trainee>> GetAllTrainee_InSpecific_Course(int courseid);
     }
 }

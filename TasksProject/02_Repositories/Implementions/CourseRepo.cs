@@ -14,9 +14,9 @@ namespace TasksProject._02_Repositories.Implementions
             _Dbcontext = dbcontext;
         }
 
-       
+        
 
-       public  async Task<Course?> GetCourseWithDepartment(int id)
+        public  async Task<Course?> GetCourseWithDepartment(int id)
         {
             var course = await _Dbcontext.Courses.Include(o => o.Department).SingleOrDefaultAsync(o => o.Id == id);
             return course;

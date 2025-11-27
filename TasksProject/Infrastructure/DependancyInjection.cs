@@ -16,12 +16,21 @@ namespace TasksProject.Infrastructure
            services.AddTransient<ICourseServices, CourseServices>();
            services.AddTransient<IInstructorServices, InstructorServices>();
            services.AddTransient<ITraineeServices, TraineeServices>();
+            services.AddTransient<IDepartmentServices, DepartmentServices>();
+            services.AddTransient<IEmailServices, EmailService>();
+
             //------------------------------------------------
 
             services.AddTransient(typeof(IGenericRepo<>), typeof(GenericRepo<>));
             services.AddTransient<IInstructorRepo, InstructorRepo>();
             services.AddTransient<ITraineeRepo, TraineeRepo>();
             services.AddTransient<IcourseRepo, CourseRepo>();
+
+           
+          
+
+
+
             return services;
         }
     }

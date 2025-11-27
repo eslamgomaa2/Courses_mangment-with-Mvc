@@ -1,8 +1,9 @@
 using DBcontext;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
-using TasksProject.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
+using Microsoft.EntityFrameworkCore;
+using TasksProject.Data.Entities;
+using TasksProject.Helper;
 using TasksProject.Infrastructure; // Add this using directive  
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,8 +15,17 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddIdentity<ApplicationUser, IdentityRole<int>>()
-   .AddEntityFrameworkStores<ApplicationDbContext>();
+   .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddInfrastructure();
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+});
+
 
 var app = builder.Build();
 
@@ -29,14 +39,14 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
 
 app.MapControllerRoute(
    name: "default",
-   pattern: "{controller=Instructor}/{action=AllInstructor}")
+   pattern: "{controller=Account}/{action=Login}")
    .WithStaticAssets();
 
 app.Run();
